@@ -16,7 +16,7 @@
 //
 
 public struct Styles: Codable, Equatable {
-//  public let numberFormats: NumberFormats?
+  public let numberFormats: NumberFormats?
   public let fonts: Fonts?
   public let fills: Fills?
   public let borders: Borders?
@@ -28,7 +28,7 @@ public struct Styles: Codable, Equatable {
   public let colors: Colors?
 
   enum CodingKeys: String, CodingKey {
-//    case numberFormats = "numFmts"
+    case numberFormats = "numFmts"
     case fonts
     case fills
     case borders
@@ -47,25 +47,25 @@ public struct Color: Codable, Equatable {
   public let rgb: String?
 }
 
-//public struct NumberFormats: Codable, Equatable {
-//  public let items: [NumberFormat]
-//  public let count: Int
-//
-//  enum CodingKeys: String, CodingKey {
-//    case items = "numFmt"
-//    case count
-//  }
-//}
-//
-//public struct NumberFormat: Codable, Equatable {
-//  public let id: Int
-//  public let formatCode: String
-//
-//  enum CodingKeys: String, CodingKey {
-//    case id = "numFmtId"
-//    case formatCode
-//  }
-//}
+public struct NumberFormats: Codable, Equatable {
+  public let items: [NumberFormat]
+  public let count: Int
+
+  enum CodingKeys: String, CodingKey {
+    case items = "numFmt"
+    case count
+  }
+}
+
+public struct NumberFormat: Codable, Equatable {
+  public let id: Int
+  public let formatCode: String
+
+  enum CodingKeys: String, CodingKey {
+    case id = "numFmtId"
+    case formatCode
+  }
+}
 
 public struct Fonts: Codable, Equatable {
   public let items: [Font]
@@ -273,7 +273,7 @@ public struct Format: Codable, Equatable {
     public let wrapText: Bool?
   }
 
-  public let numberFormatId: Int
+  public let numberFormatId: Int?
   public let borderId: Int?
   public let fillId: Int?
   public let fontId: Int
