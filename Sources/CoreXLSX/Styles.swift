@@ -47,25 +47,25 @@ public struct Color: Codable, Equatable {
   public let rgb: String?
 }
 
-public struct NumberFormats: Codable, Equatable {
-  public let items: [NumberFormat]
-  public let count: Int
-
-  enum CodingKeys: String, CodingKey {
-    case items = "numFmt"
-    case count
-  }
-}
-
-public struct NumberFormat: Codable, Equatable {
-  public let id: Int
-  public let formatCode: String
-
-  enum CodingKeys: String, CodingKey {
-    case id = "numFmtId"
-    case formatCode
-  }
-}
+//public struct NumberFormats: Codable, Equatable {
+//  public let items: [NumberFormat]
+//  public let count: Int
+//
+//  enum CodingKeys: String, CodingKey {
+//    case items = "numFmt"
+//    case count
+//  }
+//}
+//
+//public struct NumberFormat: Codable, Equatable {
+//  public let id: Int
+//  public let formatCode: String
+//
+//  enum CodingKeys: String, CodingKey {
+//    case id = "numFmtId"
+//    case formatCode
+//  }
+//}
 
 public struct Fonts: Codable, Equatable {
   public let items: [Font]
