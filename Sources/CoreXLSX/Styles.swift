@@ -58,7 +58,7 @@ public struct NumberFormats: Codable, Equatable {
 }
 
 public struct NumberFormat: Codable, Equatable {
-  public let id: Int
+  public let id: Int?
   public let formatCode: String
 
   enum CodingKeys: String, CodingKey {
