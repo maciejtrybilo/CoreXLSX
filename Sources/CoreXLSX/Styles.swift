@@ -16,7 +16,7 @@
 //
 
 public struct Styles: Codable, Equatable {
-  public let numberFormats: NumberFormats?
+//  public let numberFormats: NumberFormats?
   public let fonts: Fonts?
   public let fills: Fills?
   public let borders: Borders?
@@ -28,7 +28,7 @@ public struct Styles: Codable, Equatable {
   public let colors: Colors?
 
   enum CodingKeys: String, CodingKey {
-    case numberFormats = "numFmts"
+//    case numberFormats = "numFmts"
     case fonts
     case fills
     case borders
