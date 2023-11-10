@@ -174,7 +174,8 @@ public struct Fills: Codable, Equatable {
 }
 
 public struct Fill: Codable, Equatable {
-  public let patternFill: PatternFill
+  public let patternFill: PatternFill?
+  public let gradientFill: GradientFill?
 }
 
 public struct PatternFill: Codable, Equatable {
@@ -187,6 +188,17 @@ public struct PatternFill: Codable, Equatable {
     case backgroundColor = "bgColor"
     case patternType
   }
+}
+
+public struct GradientFill: Codable, Equatable {
+    
+  public struct Stop: Codable, Equatable {
+    public let position: Int?
+    public let color: Color?
+  }
+    
+  public let degree: Int?
+  public let stops: [Stop]?
 }
 
 public struct Borders: Codable, Equatable {
