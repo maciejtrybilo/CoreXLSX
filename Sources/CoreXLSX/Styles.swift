@@ -276,7 +276,7 @@ public struct Format: Codable, Equatable {
   public let numberFormatId: Int?
   public let borderId: Int?
   public let fillId: Int?
-  public let fontId: Int
+  public let fontId: Int?
   public let applyNumberFormat: Bool?
   public let applyFont: Bool?
   public let applyFill: Bool?
