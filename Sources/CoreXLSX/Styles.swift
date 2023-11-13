@@ -350,7 +350,7 @@ public struct TableStyle: Codable, Equatable {
     public let type: String
   }
 
-  public let pivot: Bool
+  public let pivot: Bool?
   public let name: String
   public let count: Int
   public let elements: [Element]
