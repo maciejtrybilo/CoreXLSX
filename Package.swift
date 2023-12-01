@@ -25,7 +25,7 @@ let package = Package(
     // .package(url: /* package url */, from: "1.0.0"),
 //    .package(url: "https://github.com/maxdesiatov/XMLCoder.git", .upToNextMinor(from: "0.14.0")),
 //    .package(path: "../XMLCoder"),
-    .package(url: "https://github.com/maciejtrybilo/XMLCoder.git", branch: "parsebug"),
+    .package(url: "https://github.com/maciejtrybilo/XMLCoder.git", branch: "parserbug"),
     .package(url: "https://github.com/weichsel/ZIPFoundation.git",
              .upToNextMinor(from: "0.9.11")),
   ],

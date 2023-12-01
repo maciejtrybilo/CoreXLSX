@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/maciejtrybilo/XMLCoder.git",
       "state" : {
-        "branch" : "optimised",
-        "revision" : "96d6e9e2575c0bf7c0353f4579fe43953e001fdd"
+        "branch" : "parserbug",
+        "revision" : "d0f7f304d7329435c7594b47ff3ad21e3b963791"
       }
     },
     {
