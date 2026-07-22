@@ -130,13 +130,17 @@ public struct Relationship: Codable, Equatable {
       """
       http://purl.oclc.org/ooxml/officeDocument/relationships/extendedProperties
       """
+    case classificationLabels =
+      """
+      http://schemas.microsoft.com/office/2020/02/relationships/classificationlabels
+      """
   }
 
   /// The identifier for this entity.
   public let id: String
 
   /// The type of this entity.
-  public let type: SchemaType?
+  public let type: SchemaType
 
   /// The path to this entity in the `.xlsx` archive.
   public let target: String
