@@ -136,7 +136,7 @@ public struct Relationship: Codable, Equatable {
   public let id: String
 
   /// The type of this entity.
-  public let type: SchemaType
+  public let type: SchemaType?
 
   /// The path to this entity in the `.xlsx` archive.
   public let target: String
