@@ -138,6 +138,10 @@ public struct Relationship: Codable, Equatable {
       """
       http://schemas.microsoft.com/office/2017/06/relationships/rdRichValue
       """
+    case richValueRel =
+      """
+      http://schemas.microsoft.com/office/2022/10/relationships/richValueRel
+      """
   }
 
   /// The identifier for this entity.
