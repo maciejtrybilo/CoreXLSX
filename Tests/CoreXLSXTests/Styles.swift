@@ -62,27 +62,27 @@ private let fills = Fills(items: [
     patternType: "none",
     foregroundColor: nil,
     backgroundColor: nil
-  )),
+  ), gradientFill: nil),
   Fill(patternFill: PatternFill(
     patternType: "gray125",
     foregroundColor: nil,
     backgroundColor: nil
-  )),
+  ), gradientFill: nil),
   Fill(patternFill: PatternFill(
     patternType: "solid",
     foregroundColor: Color(indexed: 9, auto: nil, rgb: nil),
     backgroundColor: Color(indexed: nil, auto: 1, rgb: nil)
-  )),
+  ), gradientFill: nil),
   Fill(patternFill: PatternFill(
     patternType: "solid",
     foregroundColor: Color(indexed: 11, auto: nil, rgb: nil),
     backgroundColor: Color(indexed: nil, auto: 1, rgb: nil)
-  )),
+  ), gradientFill: nil),
   Fill(patternFill: PatternFill(
     patternType: "solid",
     foregroundColor: Color(indexed: 13, auto: nil, rgb: nil),
     backgroundColor: Color(indexed: nil, auto: 1, rgb: nil)
-  )),
+  ), gradientFill: nil),
 ], count: 5)
 
 final class StylesTests: XCTestCase {

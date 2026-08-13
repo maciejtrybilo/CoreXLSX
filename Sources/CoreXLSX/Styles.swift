@@ -58,7 +58,7 @@ public struct NumberFormats: Codable, Equatable {
 }
 
 public struct NumberFormat: Codable, Equatable {
-  public let id: Int
+  public let id: Int?
   public let formatCode: String
 
   enum CodingKeys: String, CodingKey {
@@ -174,7 +174,8 @@ public struct Fills: Codable, Equatable {
 }
 
 public struct Fill: Codable, Equatable {
-  public let patternFill: PatternFill
+  public let patternFill: PatternFill?
+  public let gradientFill: GradientFill?
 }
 
 public struct PatternFill: Codable, Equatable {
@@ -187,6 +188,17 @@ public struct PatternFill: Codable, Equatable {
     case backgroundColor = "bgColor"
     case patternType
   }
+}
+
+public struct GradientFill: Codable, Equatable {
+    
+  public struct Stop: Codable, Equatable {
+    public let position: Int?
+    public let color: Color?
+  }
+    
+  public let degree: Int?
+  public let stops: [Stop]?
 }
 
 public struct Borders: Codable, Equatable {
@@ -261,10 +273,10 @@ public struct Format: Codable, Equatable {
     public let wrapText: Bool?
   }
 
-  public let numberFormatId: Int
+  public let numberFormatId: Int?
   public let borderId: Int?
   public let fillId: Int?
-  public let fontId: Int
+  public let fontId: Int?
   public let applyNumberFormat: Bool?
   public let applyFont: Bool?
   public let applyFill: Bool?
@@ -301,7 +313,7 @@ public struct CellStyles: Codable, Equatable {
 public struct CellStyle: Codable, Equatable {
   public let name: String
   public let formatId: Int
-  public let builtinId: Int
+  public let builtinId: Int?
 
   enum CodingKeys: String, CodingKey {
     case formatId = "xfId"
@@ -338,7 +350,7 @@ public struct TableStyle: Codable, Equatable {
     public let type: String
   }
 
-  public let pivot: Bool
+  public let pivot: Bool?
   public let name: String
   public let count: Int
   public let elements: [Element]
@@ -360,7 +372,7 @@ public struct Colors: Codable, Equatable {
     }
   }
 
-  public let indexed: Indexed
+  public let indexed: Indexed?
 
   enum CodingKeys: String, CodingKey {
     case indexed = "indexedColors"
