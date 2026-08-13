@@ -18,7 +18,7 @@
 /** An array of `Relationship` values. This type directly maps the internal XML structure of the
  `.xlsx` format.
  */
-public struct Relationships: Codable, Equatable {
+public struct Relationships: Decodable, Equatable {
   public let items: [Relationship]
 
   enum CodingKeys: String, CodingKey {
@@ -30,126 +30,201 @@ public struct Relationships: Codable, Equatable {
  chartsheets, thumbnails and a few other internal entities. Most of the time users of CoreXLSX
  wouldn't need to handle relationships directly.
  */
-public struct Relationship: Codable, Equatable {
-  public enum SchemaType: String, Codable {
-    case calcChain =
+public struct Relationship: Decodable, Equatable {
+  public enum SchemaType: Decodable, Equatable {
+    
+    public static let nonOtherCases: [Relationship.SchemaType] = [
+      .calcChain,
+      .officeDocument,
+      .extendedProperties,
+      .packageCoreProperties,
+      .coreProperties,
+      .connections,
+      .worksheet,
+      .chartsheet,
+      .sharedStrings,
+      .styles,
+      .theme,
+      .pivotCache,
+      .metadataThumbnail,
+      .customProperties,
+      .externalLink,
+      .customXml,
+      .person,
+      .webExtensionTaskPanes,
+      .googleWorkbookMetadata,
+      .purlOCLC,
+      .classificationLabels,
+      .rdRichValue,
+      .richValueRel,
+      .sheetMetadata,
+      .rdRichValueTypes,
+    ]
+    
+    case calcChain
+    case officeDocument
+    case extendedProperties
+    case packageCoreProperties
+    case coreProperties
+    case connections
+    case worksheet
+    case chartsheet
+    case sharedStrings
+    case styles
+    case theme
+    case pivotCache
+    case metadataThumbnail
+    case customProperties
+    case externalLink
+    case customXml
+    case person
+    case webExtensionTaskPanes
+    case googleWorkbookMetadata
+    case purlOCLC
+    case classificationLabels
+    case rdRichValue
+    case richValueRel
+    case sheetMetadata
+    case rdRichValueTypes
+    case other(url: String)
+    
+    public init(from decoder: any Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      let raw = try container.decode(String.self)
+      
+      for nonOtherCase in Self.nonOtherCases {
+        if raw == nonOtherCase.url {
+          self = nonOtherCase
+          return
+        }
+      }
+      
+      self = .other(url: raw)
+    }
+    
+    var url: String {
+      switch self {
+      case .calcChain:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       calcChain
       """
-    case officeDocument =
+      case .officeDocument:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       officeDocument
       """
-    case extendedProperties =
+      case .extendedProperties:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       extended-properties
       """
-    case packageCoreProperties =
+      case .packageCoreProperties:
       """
       http://schemas.openxmlformats.org/package/2006/relationships/metadata/\
       core-properties
       """
-    case coreProperties =
+      case .coreProperties:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       metadata/core-properties
       """
-    case connections =
+      case .connections:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       connections
       """
-    case worksheet =
+      case .worksheet:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       worksheet
       """
-    case chartsheet =
+      case .chartsheet:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       chartsheet
       """
-    case sharedStrings =
+      case .sharedStrings:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       sharedStrings
       """
-    case styles =
+      case .styles:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       styles
       """
-    case theme =
+      case .theme:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       theme
       """
-    case pivotCache =
+      case .pivotCache:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       pivotCacheDefinition
       """
-    case metadataThumbnail =
+      case .metadataThumbnail:
       """
       http://schemas.openxmlformats.org/package/2006/relationships/metadata/\
       thumbnail
       """
-    case customProperties =
+      case .customProperties:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       custom-properties
       """
-    case externalLink =
+      case .externalLink:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       externalLink
       """
-    case customXml =
+      case .customXml:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/\
       customXml
       """
-    case person =
+      case .person:
       """
       http://schemas.microsoft.com/office/2017/10/relationships/\
       person
       """
-    case webExtensionTaskPanes =
+      case .webExtensionTaskPanes:
       """
       http://schemas.microsoft.com/office/2011/relationships/\
       webextensiontaskpanes
       """
-    case googleWorkbookMetadata =
+      case .googleWorkbookMetadata:
       """
       http://customschemas.google.com/relationships/workbookmetadata
       """
-    case purlOCLC =
+      case .purlOCLC:
       """
       http://purl.oclc.org/ooxml/officeDocument/relationships/extendedProperties
       """
-    case classificationLabels =
+      case .classificationLabels:
       """
       http://schemas.microsoft.com/office/2020/02/relationships/classificationlabels
       """
-    case rdRichValue =
+      case .rdRichValue:
       """
       http://schemas.microsoft.com/office/2017/06/relationships/rdRichValue
       """
-    case richValueRel =
+      case .richValueRel:
       """
       http://schemas.microsoft.com/office/2022/10/relationships/richValueRel
       """
-    case sheetMetadata =
+      case .sheetMetadata:
       """
       http://schemas.openxmlformats.org/officeDocument/2006/relationships/sheetMetadata
       """
-    case rdRichValueTypes =
+      case .rdRichValueTypes:
       """
       http://schemas.microsoft.com/office/2017/06/relationships/rdRichValueTypes
       """
+      case .other(let url): url
+      }
+    }
   }
 
   /// The identifier for this entity.
